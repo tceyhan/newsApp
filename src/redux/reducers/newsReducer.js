@@ -1,4 +1,5 @@
 import { SET_NEWS_LIST, CLEAR_NEWS_LIST } from "../types/newsTypes";
+
 const initialState = {
   newsList: [],
 };

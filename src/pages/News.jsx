@@ -9,10 +9,9 @@ import { Pagination } from "@mui/material";
 import usePagination from "../components/Pagination";
 
 const News = () => {
-  
   const dispatch = useDispatch();
   const { newsList } = useSelector((state) => state.news);
-  const loading = useSelector((state) => state.app.loading);
+  const { loading } = useSelector((state) => state.app);
 
   let [page, setPage] = useState(1);
   const PER_PAGE = 6;
@@ -27,7 +26,7 @@ const News = () => {
 
   useEffect(() => {
     dispatch(getNews); // we are giving async function to dispatch as a parameter.
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -49,12 +48,14 @@ const News = () => {
           style={{ marginTop: "4rem" }}
         >
           {_DATA.currentData().map((item, index) => (
-            <Card sx={{ maxWidth: 345, m: 5, maxHeight: 600 }} key={index}>
+            <Card sx={{ maxWidth: 345, m: 5, maxHeight: 700 }} key={index}>
               <Cards
                 urlToImage={item.urlToImage}
                 title={item.title}
                 content={item.content}
                 url={item.url}
+                publishedAt={item.publishedAt}
+                source={item.source.name}
               />
             </Card>
           ))}

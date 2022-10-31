@@ -14,3 +14,6 @@ const appReducer = (state = initialState, { type, payload }) => {
 };
 
 export default appReducer;
+
+
+// rxreducer snippet

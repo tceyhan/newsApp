@@ -12,3 +12,4 @@ if (process.env.NODE_ENV === "development") {
 export default store;
 
 // using middleware to convert api response to plain object for reducer functions
+// createStore takes single reducer
