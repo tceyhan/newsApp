@@ -20,7 +20,7 @@ const News = () => {
 
   let [page, setPage] = useState(1);
   const PER_PAGE = 6;
-  const { currentUser } = useSelector((state) => state.auth);
+ 
   const count = Math.ceil(newsList.length / PER_PAGE);
   const _DATA = usePagination(newsList, PER_PAGE);
 
