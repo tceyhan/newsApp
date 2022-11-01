@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../utils/firebaseUtil";
 import { clearCurrentUser } from "../redux/actions/authActions";
-import Search from "./Search";
+
 
 const MyNavbar = () => {
   // const currentUser = true;
@@ -40,7 +40,9 @@ const MyNavbar = () => {
   const handleRegister = () => {
     navigate("/register");
   };
-
+const handleUserFav = () => {
+  navigate("/favourite")
+};
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
@@ -54,8 +56,7 @@ const MyNavbar = () => {
             onClick={() => navigate("/")}
           >
             Redux News
-          </Typography>
-         {currentUser? <Search /> : null}
+          </Typography>     
           
 
           {currentUser ? (
@@ -94,6 +95,7 @@ const MyNavbar = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>News</MenuItem>
+                <MenuItem onClick={handleUserFav}>Favourites</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>

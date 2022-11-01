@@ -20,9 +20,8 @@ const Cards = ({
   publishedAt,
   source,
   item,
+  handleFav
 }) => {
- 
-  
   const { currentUser } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ const Cards = ({
     navigate("/login");
     toastWarnNotify("Please login to see details");
   };
-
 
   return (
     <Box>
@@ -67,7 +65,7 @@ const Cards = ({
               variant="contained"
               color="success"
               endIcon={<ShareIcon />}
-              style={{ marginRight: "1rem" }}             
+              style={{ marginRight: "1rem" }}
             >
               Share
             </Button>
@@ -76,7 +74,8 @@ const Cards = ({
               variant="contained"
               color="success"
               endIcon={<ThumbUpIcon />}
-              style={{ marginRight: "1rem" }}             
+              style={{ marginRight: "1rem" }}
+              onClick={() => handleFav(item)}
             >
               FAVOURITE
             </Button>

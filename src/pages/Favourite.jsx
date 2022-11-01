@@ -1,18 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+
+import React from "react";
 
 
 function Favourite() {
-
-const { favList } = useSelector((state) => state.news);
-console.log(favList)
-
+ var favori = new Array();
+ favori = localStorage.getItem("favori");
+console.log(favori);
 
   return (
     <div>
-        {/* {favList.map((item => console.log(item)))}       */}
+      <ul>
+        {favori?.map((item) =><li>item.title</li>)}
+      </ul>
     </div>
   )
-}
-
+};
 export default Favourite;

@@ -1,38 +1,14 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { Button } from "@mui/material";
 
-
-export default function Search() {
-
-  const [searchText, setSearchText] = useState("");
-  const { newsList } = useSelector((state) => state.news);
-
-  console.log(searchText);
+export default function Search({ searchText, onChange, handleSearch }) {
+  
   return (
-    <Stack spacing={3} sx={{ width: 300, backgroundColor:'orange', borderRadius: 5 }}>  
-      <Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={newsList.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search Title"
-            InputProps={{
-              ...params.InputProps,
-              type: "search",
-            }}
-            value={searchText}
-            onChange={(e) =>setSearchText(e.target.value)}
-          />
-        )}
-      />
+    <Stack spacing={3} sx={{display: 'flex', width: 500, backgroundColor: "lightgrey" }}>
+      <TextField value={searchText} onChange={() =>onChange(searchText)} />
+      <Button onClick={handleSearch}>SEARCH</Button>
     </Stack>
   );
 }
-
