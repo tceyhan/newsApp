@@ -15,7 +15,7 @@ import { clearCurrentUser } from "../redux/actions/authActions";
 
 
 const MyNavbar = () => {
-  // const currentUser = true;
+
   const { currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,9 +40,9 @@ const MyNavbar = () => {
   const handleRegister = () => {
     navigate("/register");
   };
-const handleUserFav = () => {
-  navigate("/favourite")
-};
+// const handleUserFav = () => {
+//   navigate("/favourite")
+// };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
@@ -95,7 +95,7 @@ const handleUserFav = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>News</MenuItem>
-                <MenuItem onClick={handleUserFav}>Favourites</MenuItem>
+                {/* <MenuItem onClick={handleUserFav}>Favourites</MenuItem> */}
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
