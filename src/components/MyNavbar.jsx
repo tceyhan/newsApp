@@ -12,6 +12,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../utils/firebaseUtil";
 import { clearCurrentUser } from "../redux/actions/authActions";
+import Search from "./Search";
 
 const MyNavbar = () => {
   // const currentUser = true;
@@ -43,7 +44,9 @@ const MyNavbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
+        
         <Toolbar>
+        
           <Typography
             variant="h4"
             component="div"
@@ -52,9 +55,12 @@ const MyNavbar = () => {
           >
             Redux News
           </Typography>
+         {currentUser? <Search /> : null}
+          
 
           {currentUser ? (
             <div>
+             
               <IconButton
                 size="large"
                 aria-controls="menu-appbar"
@@ -67,7 +73,7 @@ const MyNavbar = () => {
                     marginRight: "1rem",
                   }}
                 >
-                  {currentUser?.displayName}
+                  {currentUser?.displayName || currentUser?.email}
                 </Typography>
                 <AccountCircle />
               </IconButton>

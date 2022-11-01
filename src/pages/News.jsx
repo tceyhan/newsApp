@@ -9,6 +9,9 @@ import { Pagination } from "@mui/material";
 import usePagination from "../components/Pagination";
 
 const News = () => {
+  const [favList, setFavList] = useState([]);
+  const [isFavourite, setIsFavourite] = useState(false);
+  
   const dispatch = useDispatch();
   const { newsList } = useSelector((state) => state.news);
   const { loading } = useSelector((state) => state.app);
@@ -28,6 +31,11 @@ const News = () => {
     dispatch(getNews); // we are giving async function to dispatch as a parameter.
   }, [dispatch]);
 
+  const handleFav = (item) => {
+    setIsFavourite(!isFavourite);
+    setFavList([...favList, item ]);
+  };
+  console.log(favList);
   return (
     <>
       {loading ? (
@@ -48,14 +56,16 @@ const News = () => {
           style={{ marginTop: "4rem" }}
         >
           {_DATA.currentData().map((item, index) => (
-            <Card sx={{ maxWidth: 345, m: 5, maxHeight: 700 }} key={index}>
+            <Card sx={{ maxWidth: 345, m: 5, maxHeight: 700 }} key={index} onClick={() => handleFav(item)}>
               <Cards
                 urlToImage={item.urlToImage}
                 title={item.title}
                 content={item.content}
                 url={item.url}
                 publishedAt={item.publishedAt}
-                source={item.source.name}
+                source={item.source.name}                
+                item={item}                
+                value={isFavourite}
               />
             </Card>
           ))}

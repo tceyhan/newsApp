@@ -2,35 +2,36 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Box, CardMedia } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../utils/toastNotify";
 import SendIcon from "@mui/icons-material/Send";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { useState } from "react";
-import { addFavorite } from "../redux/actions/newsActions";
+import ShareIcon from "@mui/icons-material/Share";
 
+import { CardMedia } from "@mui/material";
+import { Box } from "@mui/system";
 
-const Cards = ({ urlToImage, title, content, url, publishedAt, source }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
-
+const Cards = ({
+  urlToImage,
+  title,
+  content,
+  url,
+  publishedAt,
+  source,
+  item,
+}) => {
+ 
+  
   const { currentUser } = useSelector((state) => state.auth);
 
-
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const seeDetails = () => {
     navigate("/login");
     toastWarnNotify("Please login to see details");
   };
 
-  const handleFav = () => {
-    dispatch(addFavorite(isFavourite));
-    setIsFavourite(!isFavourite);
-    navigate("/favourite")
-  };
 
   return (
     <Box>
@@ -65,13 +66,19 @@ const Cards = ({ urlToImage, title, content, url, publishedAt, source }) => {
               size="small"
               variant="contained"
               color="success"
-              endIcon={<ThumbUpIcon />}
-              style={{ marginRight: "1rem" }}
-              onClick={handleFav}
-              value={isFavourite}
-              // onChange={() => setIsFavourite(!isFavourite)}
+              endIcon={<ShareIcon />}
+              style={{ marginRight: "1rem" }}             
             >
               Share
+            </Button>
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              endIcon={<ThumbUpIcon />}
+              style={{ marginRight: "1rem" }}             
+            >
+              FAVOURITE
             </Button>
             <Button
               size="small"

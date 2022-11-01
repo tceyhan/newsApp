@@ -5,7 +5,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import News from "../pages/News";
-import Favourite from "../pages/Favourite";
+
 
 const Router = () => {
   return (
@@ -15,8 +15,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<PrivateRouter />}>
-          <Route path="" element={<News />} />
-          <Route path="/favourite" element={<Favourite />} />
+          <Route path="" element={<News />} />          
         </Route>
       </Routes>
     </BrowserRouter>
